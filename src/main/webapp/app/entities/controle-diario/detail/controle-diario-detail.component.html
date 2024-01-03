@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (controleDiario) {
+      <div>
+        <h2 data-cy="controleDiarioDetailsHeading"><span jhiTranslate="lojaDoraApp.controleDiario.detail.title">Controle Diario</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ controleDiario.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleDiario.data">Data</span></dt>
+          <dd>
+            <span>{{ controleDiario.data | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleDiario.cliente">Cliente</span></dt>
+          <dd>
+            <span>{{ controleDiario.cliente }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleDiario.valorCompra">Valor Compra</span></dt>
+          <dd>
+            <span>{{ controleDiario.valorCompra }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleDiario.valorPago">Valor Pago</span></dt>
+          <dd>
+            <span>{{ controleDiario.valorPago }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleDiario.saldoDevedor">Saldo Devedor</span></dt>
+          <dd>
+            <span>{{ controleDiario.saldoDevedor }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleDiario.recebimento">Recebimento</span></dt>
+          <dd>
+            <span>{{ controleDiario.recebimento }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleDiario.pagamento">Pagamento</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'lojaDoraApp.FormasPagamento.' + controleDiario.pagamento }}">{{ controleDiario.pagamento }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleDiario.banco">Banco</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'lojaDoraApp.Banco.' + controleDiario.banco }}">{{ controleDiario.banco }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/controle-diario', controleDiario.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

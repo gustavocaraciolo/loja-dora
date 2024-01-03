@@ -1,0 +1,30 @@
+{
+  "lojaDoraApp": {
+    "controleAjustes": {
+      "home": {
+        "title": "Controle Ajustes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Controle Ajustes",
+        "createOrEditLabel": "Create or edit a Controle Ajustes",
+        "notFound": "No Controle Ajustes found"
+      },
+      "created": "A new Controle Ajustes is created with identifier {{ param }}",
+      "updated": "A Controle Ajustes is updated with identifier {{ param }}",
+      "deleted": "A Controle Ajustes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Controle Ajustes {{ id }}?"
+      },
+      "detail": {
+        "title": "Controle Ajustes"
+      },
+      "id": "ID",
+      "dataEntrega": "Data Entrega",
+      "dataRecebimento": "Data Recebimento",
+      "qtdPecas": "Qtd Pecas",
+      "descricao": "Descricao",
+      "valor": "Valor",
+      "receita": "Receita",
+      "funcionario": "Funcionario"
+    }
+  }
+}

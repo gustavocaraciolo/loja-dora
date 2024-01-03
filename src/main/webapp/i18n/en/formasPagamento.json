@@ -1,0 +1,10 @@
+{
+  "lojaDoraApp": {
+    "FormasPagamento": {
+      "null": "",
+      "TRANSFERENCIA": "TRANSFERENCIA",
+      "DINHEIRO": "DINHEIRO",
+      "MULTICAIXA": "MULTICAIXA"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "annotations": {
+    "changelogDate": "20240103084440"
+  },
+  "applications": "*",
+  "entityTableName": "controle_diario",
+  "fields": [
+    {
+      "fieldName": "data",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "cliente",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valorCompra",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "valorPago",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "saldoDevedor",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "recebimento",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "pagamento",
+      "fieldType": "FormasPagamento",
+      "fieldValues": "TRANSFERENCIA,DINHEIRO,MULTICAIXA"
+    },
+    {
+      "fieldName": "banco",
+      "fieldType": "Banco",
+      "fieldValues": "SOL,CAIXA_ANGOLA,NUBANK"
+    }
+  ],
+  "name": "ControleDiario",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

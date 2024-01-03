@@ -1,0 +1,120 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-fluxo-caixa-heading" data-cy="FluxoCaixaCreateUpdateHeading" jhiTranslate="lojaDoraApp.fluxoCaixa.home.createOrEditLabel">
+        Criar ou editar Fluxo Caixa
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.fluxoCaixa.data" for="field_data">Data</label>
+          <div class="input-group">
+            <input
+              id="field_data"
+              data-cy="data"
+              type="text"
+              class="form-control"
+              name="data"
+              ngbDatepicker
+              #dataDp="ngbDatepicker"
+              formControlName="data"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dataDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.fluxoCaixa.saldo" for="field_saldo">Saldo</label>
+          <input type="number" class="form-control" name="saldo" id="field_saldo" data-cy="saldo" formControlName="saldo" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.fluxoCaixa.banco" for="field_banco">Banco</label>
+          <select class="form-control" name="banco" formControlName="banco" id="field_banco" data-cy="banco">
+            <option [ngValue]="null">{{ 'lojaDoraApp.Banco.null' | translate }}</option>
+            @for (banco of bancoValues; track $index) {
+              <option [value]="banco">{{ 'lojaDoraApp.Banco.' + banco | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.fluxoCaixa.valor" for="field_valor">Valor</label>
+          <input type="number" class="form-control" name="valor" id="field_valor" data-cy="valor" formControlName="valor" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.fluxoCaixa.fixoVariavel" for="field_fixoVariavel">Fixo Variavel</label>
+          <select class="form-control" name="fixoVariavel" formControlName="fixoVariavel" id="field_fixoVariavel" data-cy="fixoVariavel">
+            <option [ngValue]="null">{{ 'lojaDoraApp.FixoVariavel.null' | translate }}</option>
+            @for (fixoVariavel of fixoVariavelValues; track $index) {
+              <option [value]="fixoVariavel">{{ 'lojaDoraApp.FixoVariavel.' + fixoVariavel | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.fluxoCaixa.entradaSaida" for="field_entradaSaida">Entrada Saida</label>
+          <select class="form-control" name="entradaSaida" formControlName="entradaSaida" id="field_entradaSaida" data-cy="entradaSaida">
+            <option [ngValue]="null">{{ 'lojaDoraApp.EntradaSaida.null' | translate }}</option>
+            @for (entradaSaida of entradaSaidaValues; track $index) {
+              <option [value]="entradaSaida">{{ 'lojaDoraApp.EntradaSaida.' + entradaSaida | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.fluxoCaixa.pais" for="field_pais">Pais</label>
+          <select class="form-control" name="pais" formControlName="pais" id="field_pais" data-cy="pais">
+            <option [ngValue]="null">{{ 'lojaDoraApp.Pais.null' | translate }}</option>
+            @for (pais of paisValues; track $index) {
+              <option [value]="pais">{{ 'lojaDoraApp.Pais.' + pais | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label jhiTranslate="lojaDoraApp.fluxoCaixa.entidades" for="field_entidades">Entidades</label>
+          <select
+            class="form-control"
+            id="field_entidades"
+            data-cy="entidades"
+            multiple
+            name="entidades"
+            formControlName="entidades"
+            [compareWith]="compareEntidades"
+          >
+            @for (entidadesOption of entidadesSharedCollection; track $index) {
+              <option [ngValue]="entidadesOption">{{ entidadesOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Salvar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
