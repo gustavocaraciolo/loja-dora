@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, LOCALE_ID, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -13,12 +13,18 @@ import { Receita } from 'app/entities/enumerations/receita.model';
 import { ControleEntregasService } from '../service/controle-entregas.service';
 import { IControleEntregas } from '../controle-entregas.model';
 import { ControleEntregasFormService, ControleEntregasFormGroup } from './controle-entregas-form.service';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { NgxCurrencyDirective } from 'ngx-currency';
+
+registerLocaleData(localePt);
 
 @Component({
   standalone: true,
   selector: 'jhi-controle-entregas-update',
   templateUrl: './controle-entregas-update.component.html',
-  imports: [SharedModule, FormsModule, ReactiveFormsModule],
+  imports: [SharedModule, FormsModule, ReactiveFormsModule, NgxCurrencyDirective],
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
 })
 export class ControleEntregasUpdateComponent implements OnInit {
   isSaving = false;
