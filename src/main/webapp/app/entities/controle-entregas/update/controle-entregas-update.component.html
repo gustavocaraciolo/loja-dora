@@ -18,24 +18,54 @@
             <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
           </div>
         }
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="lojaDoraApp.controleEntregas.data" for="field_data">Data</label>
-          <div class="input-group">
-            <input
-              id="field_data"
-              data-cy="data"
-              type="text"
-              class="form-control"
-              name="data"
-              ngbDatepicker
-              #dataDp="ngbDatepicker"
-              formControlName="data"
-            />
-            <button type="button" class="btn btn-secondary" (click)="dataDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+        <div class="row">
+          <div class="col">
+            <div class="mb-3">
+              <label class="form-label" jhiTranslate="lojaDoraApp.controleEntregas.data" for="field_data">Data</label>
+              <div class="input-group">
+                <input
+                  id="field_data"
+                  data-cy="data"
+                  type="text"
+                  class="form-control"
+                  name="data"
+                  ngbDatepicker
+                  #dataDp="ngbDatepicker"
+                  formControlName="data"
+                />
+                <button type="button" class="btn btn-secondary" (click)="dataDp.toggle()">
+                  <fa-icon icon="calendar-alt"></fa-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="mb-3">
+              <label class="form-label" jhiTranslate="lojaDoraApp.controleEntregas.receita" for="field_receita">Receita</label>
+              <select class="form-control" name="receita" formControlName="receita" id="field_receita" data-cy="receita">
+                <option [ngValue]="null">{{ 'lojaDoraApp.Receita.null' | translate }}</option>
+                @for (receita of receitaValues; track $index) {
+                  <option [value]="receita">{{ 'lojaDoraApp.Receita.' + receita | translate }}</option>
+                }
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <div class="mb-3">
+              <label class="form-label" jhiTranslate="lojaDoraApp.controleEntregas.valor" for="field_valor">Valor</label>
+              <input
+                type="text"
+                class="form-control"
+                name="valor"
+                id="field_valor"
+                data-cy="valor"
+                formControlName="valor"
+                currencyMask
+                [options]="{ prefix: 'AOA ', thousands: '.', decimal: ',' }"
+              />
+            </div>
           </div>
         </div>
-
         <div class="mb-3">
           <label class="form-label" jhiTranslate="lojaDoraApp.controleEntregas.descricao" for="field_descricao">Descricao</label>
           <input type="text" class="form-control" name="descricao" id="field_descricao" data-cy="descricao" formControlName="descricao" />
@@ -47,36 +77,13 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="lojaDoraApp.controleEntregas.receita" for="field_receita">Receita</label>
-          <select class="form-control" name="receita" formControlName="receita" id="field_receita" data-cy="receita">
-            <option [ngValue]="null">{{ 'lojaDoraApp.Receita.null' | translate }}</option>
-            @for (receita of receitaValues; track $index) {
-              <option [value]="receita">{{ 'lojaDoraApp.Receita.' + receita | translate }}</option>
-            }
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="lojaDoraApp.controleEntregas.valor" for="field_valor">Valor</label>
-          <input
-            type="text"
-            class="form-control"
-            name="valor"
-            id="field_valor"
-            data-cy="valor"
-            formControlName="valor"
-            currencyMask
-            [options]="{ prefix: 'AOA ', thousands: '.', decimal: ',' }"
-          />
-        </div>
-
-        <div class="mb-3">
           <label jhiTranslate="lojaDoraApp.controleEntregas.funcionario" for="field_funcionarios">Funcionario</label>
           <select
             class="form-control"
             id="field_funcionarios"
             data-cy="funcionario"
             name="funcionarios"
+            multiple
             formControlName="funcionarios"
             [compareWith]="compareFuncionario"
           >
