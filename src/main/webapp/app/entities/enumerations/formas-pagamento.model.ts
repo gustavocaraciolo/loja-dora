@@ -1,0 +1,7 @@
+export enum FormasPagamento {
+  TRANSFERENCIA = 'TRANSFERENCIA',
+
+  DINHEIRO = 'DINHEIRO',
+
+  MULTICAIXA = 'MULTICAIXA',
+}

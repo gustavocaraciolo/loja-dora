@@ -1,0 +1,54 @@
+{
+  "annotations": {
+    "changelogDate": "20240103084240"
+  },
+  "applications": "*",
+  "entityTableName": "fluxo_caixa",
+  "fields": [
+    {
+      "fieldName": "data",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "saldo",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "banco",
+      "fieldType": "Banco",
+      "fieldValues": "SOL,CAIXA_ANGOLA,NUBANK"
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "fixoVariavel",
+      "fieldType": "FixoVariavel",
+      "fieldValues": "FIXO,VARIAVEL"
+    },
+    {
+      "fieldName": "entradaSaida",
+      "fieldType": "EntradaSaida",
+      "fieldValues": "ENTRADA,SAIDA"
+    },
+    {
+      "fieldName": "pais",
+      "fieldType": "Pais",
+      "fieldValues": "ANGOLA,BRASIL"
+    }
+  ],
+  "name": "FluxoCaixa",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "entidades",
+      "otherEntityRelationshipName": "fluxoCaixa",
+      "relationshipName": "entidades",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

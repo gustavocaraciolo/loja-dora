@@ -1,0 +1,177 @@
+<div>
+  <h2 id="page-heading" data-cy="FuncionarioHeading">
+    <span jhiTranslate="lojaDoraApp.funcionario.home.title">Funcionarios</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="lojaDoraApp.funcionario.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-funcionario"
+        [routerLink]="['/funcionario/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lojaDoraApp.funcionario.home.createLabel">Criar novo Funcionario</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (funcionarios?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lojaDoraApp.funcionario.home.notFound">Nenhum Funcionario encontrado</span>
+    </div>
+  }
+
+  @if (funcionarios && funcionarios.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="primeiroNome">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.funcionario.primeiroNome">Primeiro Nome</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ultimoNome">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.funcionario.ultimoNome">Ultimo Nome</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="enderecoLinha1">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.funcionario.enderecoLinha1">Endereco Linha 1</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="enderecoLinha2">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.funcionario.enderecoLinha2">Endereco Linha 2</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dataInicio">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.funcionario.dataInicio">Data Inicio</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="telefone">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.funcionario.telefone">Telefone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="telefoneEmergencial">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.funcionario.telefoneEmergencial">Telefone Emergencial</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.funcionario.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="banco">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.funcionario.banco">Banco</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="iban">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.funcionario.iban">Iban</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (funcionario of funcionarios; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/funcionario', funcionario.id, 'view']">{{ funcionario.id }}</a>
+              </td>
+              <td>{{ funcionario.primeiroNome }}</td>
+              <td>{{ funcionario.ultimoNome }}</td>
+              <td>{{ funcionario.enderecoLinha1 }}</td>
+              <td>{{ funcionario.enderecoLinha2 }}</td>
+              <td>{{ funcionario.dataInicio | formatMediumDate }}</td>
+              <td>{{ funcionario.telefone }}</td>
+              <td>{{ funcionario.telefoneEmergencial }}</td>
+              <td>{{ funcionario.email }}</td>
+              <td>{{ funcionario.banco }}</td>
+              <td>{{ funcionario.iban }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/funcionario', funcionario.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a [routerLink]="['/funcionario', funcionario.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(funcionario)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Excluir</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (funcionarios && funcionarios.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>
