@@ -16,6 +16,8 @@ import { ControleEntregasFormService, ControleEntregasFormGroup } from './contro
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { NgxCurrencyDirective } from 'ngx-currency';
+import { NgbDateCustomParserFormatter } from '../../../shared/date/format-display-date-pt.pipe';
+import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 registerLocaleData(localePt);
 
@@ -24,7 +26,10 @@ registerLocaleData(localePt);
   selector: 'jhi-controle-entregas-update',
   templateUrl: './controle-entregas-update.component.html',
   imports: [SharedModule, FormsModule, ReactiveFormsModule, NgxCurrencyDirective],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter },
+  ],
 })
 export class ControleEntregasUpdateComponent implements OnInit {
   isSaving = false;

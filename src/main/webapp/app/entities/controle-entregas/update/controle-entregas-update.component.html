@@ -76,13 +76,12 @@
             class="form-control"
             id="field_funcionarios"
             data-cy="funcionario"
-            multiple
             name="funcionarios"
             formControlName="funcionarios"
             [compareWith]="compareFuncionario"
           >
             @for (funcionarioOption of funcionariosSharedCollection; track $index) {
-              <option [ngValue]="funcionarioOption">{{ funcionarioOption.id }}</option>
+              <option [ngValue]="funcionarioOption">{{ funcionarioOption.primeiroNome }}</option>
             }
           </select>
         </div>
