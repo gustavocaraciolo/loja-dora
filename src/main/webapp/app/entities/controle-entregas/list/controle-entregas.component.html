@@ -49,20 +49,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="descricao">
-              <div class="d-flex">
-                <span jhiTranslate="lojaDoraApp.controleEntregas.descricao">Descricao</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="endereco">
-              <div class="d-flex">
-                <span jhiTranslate="lojaDoraApp.controleEntregas.endereco">Endereco</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col" jhiSortBy="receita">
               <div class="d-flex">
                 <span jhiTranslate="lojaDoraApp.controleEntregas.receita">Receita</span>
@@ -93,8 +79,6 @@
                 <a [routerLink]="['/controle-entregas', controleEntregas.id, 'view']">{{ controleEntregas.id }}</a>
               </td>
               <td>{{ controleEntregas.data | formatMediumDate }}</td>
-              <td>{{ controleEntregas.descricao }}</td>
-              <td>{{ controleEntregas.endereco }}</td>
               <td jhiTranslate="{{ 'lojaDoraApp.Receita.' + controleEntregas.receita }}">{{ controleEntregas.receita }}</td>
               <td>{{ controleEntregas.valor }}</td>
               <td>
