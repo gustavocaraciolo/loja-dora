@@ -1,0 +1,108 @@
+<div>
+  <h2 id="page-heading" data-cy="ControleFrequenciaHeading">
+    <span jhiTranslate="lojaDoraApp.controleFrequencia.home.title">Controle Frequencias</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="lojaDoraApp.controleFrequencia.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-controle-frequencia"
+        [routerLink]="['/controle-frequencia/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lojaDoraApp.controleFrequencia.home.createLabel">Criar novo Controle Frequencia</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (controleFrequencias?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lojaDoraApp.controleFrequencia.home.notFound">Nenhum Controle Frequencia encontrado</span>
+    </div>
+  }
+
+  @if (controleFrequencias && controleFrequencias.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dataTrabalho">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controleFrequencia.dataTrabalho">Data Trabalho</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="funcionario.id">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controleFrequencia.funcionario">Funcionario</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (controleFrequencia of controleFrequencias; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/controle-frequencia', controleFrequencia.id, 'view']">{{ controleFrequencia.id }}</a>
+              </td>
+              <td>{{ controleFrequencia.dataTrabalho | formatMediumDate }}</td>
+              <td>
+                @for (funcionario of controleFrequencia.funcionarios; track $index; let last = $last) {
+                  <span>
+                    <a class="form-control-static" [routerLink]="['/funcionario', funcionario.id, 'view']">{{ funcionario.id }}</a
+                    >{{ last ? '' : ', ' }}
+                  </span>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/controle-frequencia', controleFrequencia.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/controle-frequencia', controleFrequencia.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(controleFrequencia)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Excluir</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

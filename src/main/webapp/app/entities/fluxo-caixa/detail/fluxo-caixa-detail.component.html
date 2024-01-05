@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (fluxoCaixa) {
+      <div>
+        <h2 data-cy="fluxoCaixaDetailsHeading"><span jhiTranslate="lojaDoraApp.fluxoCaixa.detail.title">Fluxo Caixa</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ fluxoCaixa.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.fluxoCaixa.data">Data</span></dt>
+          <dd>
+            <span>{{ fluxoCaixa.data | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.fluxoCaixa.saldo">Saldo</span></dt>
+          <dd>
+            <span>{{ fluxoCaixa.saldo }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.fluxoCaixa.banco">Banco</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'lojaDoraApp.Banco.' + fluxoCaixa.banco }}">{{ fluxoCaixa.banco }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.fluxoCaixa.valor">Valor</span></dt>
+          <dd>
+            <span>{{ fluxoCaixa.valor }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.fluxoCaixa.fixoVariavel">Fixo Variavel</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'lojaDoraApp.FixoVariavel.' + fluxoCaixa.fixoVariavel }}">{{ fluxoCaixa.fixoVariavel }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.fluxoCaixa.entradaSaida">Entrada Saida</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'lojaDoraApp.EntradaSaida.' + fluxoCaixa.entradaSaida }}">{{ fluxoCaixa.entradaSaida }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.fluxoCaixa.pais">Pais</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'lojaDoraApp.Pais.' + fluxoCaixa.pais }}">{{ fluxoCaixa.pais }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.fluxoCaixa.entidades">Entidades</span></dt>
+          <dd>
+            @for (entidades of fluxoCaixa.entidades; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/entidades', entidades.id, 'view']">{{ entidades.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/fluxo-caixa', fluxoCaixa.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

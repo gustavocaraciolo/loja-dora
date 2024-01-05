@@ -1,0 +1,31 @@
+{
+  "lojaDoraApp": {
+    "controleDiario": {
+      "home": {
+        "title": "Controle Diarios",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Controle Diario",
+        "createOrEditLabel": "Criar ou editar Controle Diario",
+        "notFound": "Nenhum Controle Diario encontrado"
+      },
+      "created": "Um novo Controle Diario foi criado com o identificador {{ param }}",
+      "updated": "Um Controle Diario foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Controle Diario foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Controle Diario {{ id }}?"
+      },
+      "detail": {
+        "title": "Controle Diario"
+      },
+      "id": "ID",
+      "data": "Data",
+      "cliente": "Cliente",
+      "valorCompra": "Valor Compra",
+      "valorPago": "Valor Pago",
+      "saldoDevedor": "Saldo Devedor",
+      "recebimento": "Recebimento",
+      "pagamento": "Pagamento",
+      "banco": "Banco"
+    }
+  }
+}

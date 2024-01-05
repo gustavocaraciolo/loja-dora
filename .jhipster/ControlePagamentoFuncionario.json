@@ -1,0 +1,50 @@
+{
+  "annotations": {
+    "changelogDate": "20240103084940"
+  },
+  "applications": "*",
+  "entityTableName": "controle_pagamento_funcionario",
+  "fields": [
+    {
+      "fieldName": "data",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "salario",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "beneficio",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "comissao",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "ferias",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "adiantamento",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "Float"
+    }
+  ],
+  "name": "ControlePagamentoFuncionario",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "funcionario",
+      "otherEntityRelationshipName": "controlePagamentoFuncionario",
+      "relationshipName": "funcionario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

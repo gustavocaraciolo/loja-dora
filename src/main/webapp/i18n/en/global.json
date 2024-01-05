@@ -7,7 +7,15 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "fluxoCaixa": "Fluxo Caixa",
+        "entidades": "Entidades",
+        "controleDiario": "Controle Diario",
+        "controleEntregas": "Controle Entregas",
+        "controleFrequencia": "Controle Frequencia",
+        "controleAjustes": "Controle Ajustes",
+        "funcionario": "Funcionario",
+        "controlePagamentoFuncionario": "Controle Pagamento Funcionario"
       },
       "account": {
         "main": "Account",
