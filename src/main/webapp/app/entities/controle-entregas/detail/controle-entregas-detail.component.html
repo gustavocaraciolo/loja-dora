@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (controleEntregas) {
+      <div>
+        <h2 data-cy="controleEntregasDetailsHeading">
+          <span jhiTranslate="lojaDoraApp.controleEntregas.detail.title">Controle Entregas</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ controleEntregas.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleEntregas.data">Data</span></dt>
+          <dd>
+            <span>{{ controleEntregas.data | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleEntregas.descricao">Descricao</span></dt>
+          <dd>
+            <span>{{ controleEntregas.descricao }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleEntregas.endereco">Endereco</span></dt>
+          <dd>
+            <span>{{ controleEntregas.endereco }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleEntregas.receita">Receita</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'lojaDoraApp.Receita.' + controleEntregas.receita }}">{{ controleEntregas.receita }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleEntregas.valor">Valor</span></dt>
+          <dd>
+            <span>{{ controleEntregas.valor }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleEntregas.funcionario">Funcionario</span></dt>
+          <dd>
+            @if (controleEntregas.funcionario) {
+              <div>
+                <a [routerLink]="['/funcionario', controleEntregas.funcionario.id, 'view']">{{ controleEntregas.funcionario.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/controle-entregas', controleEntregas.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

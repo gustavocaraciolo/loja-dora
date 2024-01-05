@@ -1,0 +1,37 @@
+{
+  "lojaDoraApp": {
+    "funcionario": {
+      "home": {
+        "title": "Funcionarios",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Funcionario",
+        "createOrEditLabel": "Create or edit a Funcionario",
+        "notFound": "No Funcionarios found"
+      },
+      "created": "A new Funcionario is created with identifier {{ param }}",
+      "updated": "A Funcionario is updated with identifier {{ param }}",
+      "deleted": "A Funcionario is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Funcionario {{ id }}?"
+      },
+      "detail": {
+        "title": "Funcionario"
+      },
+      "id": "ID",
+      "primeiroNome": "Primeiro Nome",
+      "ultimoNome": "Ultimo Nome",
+      "enderecoLinha1": "Endereco Linha 1",
+      "enderecoLinha2": "Endereco Linha 2",
+      "dataInicio": "Data Inicio",
+      "telefone": "Telefone",
+      "telefoneEmergencial": "Telefone Emergencial",
+      "email": "Email",
+      "banco": "Banco",
+      "iban": "Iban",
+      "controleEntregas": "Controle Entregas",
+      "controleFrequencia": "Controle Frequencia",
+      "controlePagamentoFuncionario": "Controle Pagamento Funcionario",
+      "controleAjustes": "Controle Ajustes"
+    }
+  }
+}

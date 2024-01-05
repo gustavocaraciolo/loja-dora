@@ -1,0 +1,31 @@
+{
+  "lojaDoraApp": {
+    "fluxoCaixa": {
+      "home": {
+        "title": "Fluxo Caixas",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Fluxo Caixa",
+        "createOrEditLabel": "Criar ou editar Fluxo Caixa",
+        "notFound": "Nenhum Fluxo Caixa encontrado"
+      },
+      "created": "Um novo Fluxo Caixa foi criado com o identificador {{ param }}",
+      "updated": "Um Fluxo Caixa foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Fluxo Caixa foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Fluxo Caixa {{ id }}?"
+      },
+      "detail": {
+        "title": "Fluxo Caixa"
+      },
+      "id": "ID",
+      "data": "Data",
+      "saldo": "Saldo",
+      "banco": "Banco",
+      "valor": "Valor",
+      "fixoVariavel": "Fixo Variavel",
+      "entradaSaida": "Entrada Saida",
+      "pais": "Pais",
+      "entidades": "Entidades"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-funcionario-heading"
+        data-cy="FuncionarioCreateUpdateHeading"
+        jhiTranslate="lojaDoraApp.funcionario.home.createOrEditLabel"
+      >
+        Criar ou editar Funcionario
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.funcionario.primeiroNome" for="field_primeiroNome">Primeiro Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            name="primeiroNome"
+            id="field_primeiroNome"
+            data-cy="primeiroNome"
+            formControlName="primeiroNome"
+          />
+          @if (editForm.get('primeiroNome')!.invalid && (editForm.get('primeiroNome')!.dirty || editForm.get('primeiroNome')!.touched)) {
+            <div>
+              @if (editForm.get('primeiroNome')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">O campo é obrigatório.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.funcionario.ultimoNome" for="field_ultimoNome">Ultimo Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            name="ultimoNome"
+            id="field_ultimoNome"
+            data-cy="ultimoNome"
+            formControlName="ultimoNome"
+          />
+          @if (editForm.get('ultimoNome')!.invalid && (editForm.get('ultimoNome')!.dirty || editForm.get('ultimoNome')!.touched)) {
+            <div>
+              @if (editForm.get('ultimoNome')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">O campo é obrigatório.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.funcionario.enderecoLinha1" for="field_enderecoLinha1"
+            >Endereco Linha 1</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="enderecoLinha1"
+            id="field_enderecoLinha1"
+            data-cy="enderecoLinha1"
+            formControlName="enderecoLinha1"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.funcionario.enderecoLinha2" for="field_enderecoLinha2"
+            >Endereco Linha 2</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="enderecoLinha2"
+            id="field_enderecoLinha2"
+            data-cy="enderecoLinha2"
+            formControlName="enderecoLinha2"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.funcionario.dataInicio" for="field_dataInicio">Data Inicio</label>
+          <div class="input-group">
+            <input
+              id="field_dataInicio"
+              data-cy="dataInicio"
+              type="text"
+              class="form-control"
+              name="dataInicio"
+              ngbDatepicker
+              #dataInicioDp="ngbDatepicker"
+              formControlName="dataInicio"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dataInicioDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.funcionario.telefone" for="field_telefone">Telefone</label>
+          <input type="text" class="form-control" name="telefone" id="field_telefone" data-cy="telefone" formControlName="telefone" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.funcionario.telefoneEmergencial" for="field_telefoneEmergencial"
+            >Telefone Emergencial</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="telefoneEmergencial"
+            id="field_telefoneEmergencial"
+            data-cy="telefoneEmergencial"
+            formControlName="telefoneEmergencial"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.funcionario.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.funcionario.banco" for="field_banco">Banco</label>
+          <input type="text" class="form-control" name="banco" id="field_banco" data-cy="banco" formControlName="banco" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.funcionario.iban" for="field_iban">Iban</label>
+          <input type="text" class="form-control" name="iban" id="field_iban" data-cy="iban" formControlName="iban" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Salvar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-controle-pagamento-funcionario-heading"
+        data-cy="ControlePagamentoFuncionarioCreateUpdateHeading"
+        jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.home.createOrEditLabel"
+      >
+        Criar ou editar Controle Pagamento Funcionario
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.data" for="field_data">Data</label>
+          <div class="input-group">
+            <input
+              id="field_data"
+              data-cy="data"
+              type="text"
+              class="form-control"
+              name="data"
+              ngbDatepicker
+              #dataDp="ngbDatepicker"
+              formControlName="data"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dataDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.salario" for="field_salario">Salario</label>
+          <input type="number" class="form-control" name="salario" id="field_salario" data-cy="salario" formControlName="salario" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.beneficio" for="field_beneficio"
+            >Beneficio</label
+          >
+          <input type="number" class="form-control" name="beneficio" id="field_beneficio" data-cy="beneficio" formControlName="beneficio" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.comissao" for="field_comissao">Comissao</label>
+          <input type="number" class="form-control" name="comissao" id="field_comissao" data-cy="comissao" formControlName="comissao" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.ferias" for="field_ferias">Ferias</label>
+          <input type="number" class="form-control" name="ferias" id="field_ferias" data-cy="ferias" formControlName="ferias" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.adiantamento" for="field_adiantamento"
+            >Adiantamento</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="adiantamento"
+            id="field_adiantamento"
+            data-cy="adiantamento"
+            formControlName="adiantamento"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.total" for="field_total">Total</label>
+          <input type="number" class="form-control" name="total" id="field_total" data-cy="total" formControlName="total" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.funcionario" for="field_funcionario"
+            >Funcionario</label
+          >
+          <select
+            class="form-control"
+            id="field_funcionario"
+            data-cy="funcionario"
+            name="funcionario"
+            formControlName="funcionario"
+            [compareWith]="compareFuncionario"
+          >
+            <option [ngValue]="null"></option>
+            @for (funcionarioOption of funcionariosSharedCollection; track $index) {
+              <option [ngValue]="funcionarioOption">{{ funcionarioOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Salvar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

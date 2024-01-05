@@ -1,0 +1,183 @@
+<div>
+  <h2 id="page-heading" data-cy="ControlePagamentoFuncionarioHeading">
+    <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.home.title">Controle Pagamento Funcionarios</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-controle-pagamento-funcionario"
+        [routerLink]="['/controle-pagamento-funcionario/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.home.createLabel">Criar novo Controle Pagamento Funcionario</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (controlePagamentoFuncionarios?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.home.notFound">Nenhum Controle Pagamento Funcionario encontrado</span>
+    </div>
+  }
+
+  @if (controlePagamentoFuncionarios && controlePagamentoFuncionarios.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="data">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.data">Data</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="salario">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.salario">Salario</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="beneficio">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.beneficio">Beneficio</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="comissao">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.comissao">Comissao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ferias">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.ferias">Ferias</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="adiantamento">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.adiantamento">Adiantamento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="total">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.total">Total</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="funcionario.id">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.funcionario">Funcionario</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (controlePagamentoFuncionario of controlePagamentoFuncionarios; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/controle-pagamento-funcionario', controlePagamentoFuncionario.id, 'view']">{{
+                  controlePagamentoFuncionario.id
+                }}</a>
+              </td>
+              <td>{{ controlePagamentoFuncionario.data | formatMediumDate }}</td>
+              <td>{{ controlePagamentoFuncionario.salario }}</td>
+              <td>{{ controlePagamentoFuncionario.beneficio }}</td>
+              <td>{{ controlePagamentoFuncionario.comissao }}</td>
+              <td>{{ controlePagamentoFuncionario.ferias }}</td>
+              <td>{{ controlePagamentoFuncionario.adiantamento }}</td>
+              <td>{{ controlePagamentoFuncionario.total }}</td>
+              <td>
+                @if (controlePagamentoFuncionario.funcionario) {
+                  <div>
+                    <a [routerLink]="['/funcionario', controlePagamentoFuncionario.funcionario.id, 'view']">{{
+                      controlePagamentoFuncionario.funcionario.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/controle-pagamento-funcionario', controlePagamentoFuncionario.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/controle-pagamento-funcionario', controlePagamentoFuncionario.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button
+                    type="submit"
+                    (click)="delete(controlePagamentoFuncionario)"
+                    class="btn btn-danger btn-sm"
+                    data-cy="entityDeleteButton"
+                  >
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Excluir</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (controlePagamentoFuncionarios && controlePagamentoFuncionarios.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

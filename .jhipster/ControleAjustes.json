@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20240103084740"
+  },
+  "applications": "*",
+  "entityTableName": "controle_ajustes",
+  "fields": [
+    {
+      "fieldName": "dataEntrega",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dataRecebimento",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "qtdPecas",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "receita",
+      "fieldType": "Receita",
+      "fieldValues": "DORA,CLIENTE"
+    }
+  ],
+  "name": "ControleAjustes",
+  "relationships": [
+    {
+      "otherEntityName": "funcionario",
+      "otherEntityRelationshipName": "controleAjustes",
+      "relationshipName": "funcionario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
