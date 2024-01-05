@@ -1,0 +1,25 @@
+{
+  "annotations": {
+    "changelogDate": "20240103084640"
+  },
+  "applications": "*",
+  "entityTableName": "controle_frequencia",
+  "fields": [
+    {
+      "fieldName": "dataTrabalho",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "name": "ControleFrequencia",
+  "relationships": [
+    {
+      "otherEntityName": "funcionario",
+      "otherEntityRelationshipName": "controleFrequencia",
+      "relationshipName": "funcionario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

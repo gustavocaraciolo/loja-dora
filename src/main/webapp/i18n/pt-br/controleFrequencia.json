@@ -1,0 +1,25 @@
+{
+  "lojaDoraApp": {
+    "controleFrequencia": {
+      "home": {
+        "title": "Controle Frequencias",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Controle Frequencia",
+        "createOrEditLabel": "Criar ou editar Controle Frequencia",
+        "notFound": "Nenhum Controle Frequencia encontrado"
+      },
+      "created": "Um novo Controle Frequencia foi criado com o identificador {{ param }}",
+      "updated": "Um Controle Frequencia foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Controle Frequencia foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Controle Frequencia {{ id }}?"
+      },
+      "detail": {
+        "title": "Controle Frequencia"
+      },
+      "id": "ID",
+      "dataTrabalho": "Data Trabalho",
+      "funcionario": "Funcionario"
+    }
+  }
+}

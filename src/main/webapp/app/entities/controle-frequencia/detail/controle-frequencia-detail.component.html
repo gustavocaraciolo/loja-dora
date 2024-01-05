@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (controleFrequencia) {
+      <div>
+        <h2 data-cy="controleFrequenciaDetailsHeading">
+          <span jhiTranslate="lojaDoraApp.controleFrequencia.detail.title">Controle Frequencia</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ controleFrequencia.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleFrequencia.dataTrabalho">Data Trabalho</span></dt>
+          <dd>
+            <span>{{ controleFrequencia.dataTrabalho | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleFrequencia.funcionario">Funcionario</span></dt>
+          <dd>
+            @if (controleFrequencia.funcionario) {
+              <div>
+                <a [routerLink]="['/funcionario', controleFrequencia.funcionario.id, 'view']">{{ controleFrequencia.funcionario.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/controle-frequencia', controleFrequencia.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

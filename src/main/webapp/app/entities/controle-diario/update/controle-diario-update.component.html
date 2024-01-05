@@ -1,0 +1,123 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-controle-diario-heading"
+        data-cy="ControleDiarioCreateUpdateHeading"
+        jhiTranslate="lojaDoraApp.controleDiario.home.createOrEditLabel"
+      >
+        Criar ou editar Controle Diario
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleDiario.data" for="field_data">Data</label>
+          <div class="input-group">
+            <input
+              id="field_data"
+              data-cy="data"
+              type="text"
+              class="form-control"
+              name="data"
+              ngbDatepicker
+              #dataDp="ngbDatepicker"
+              formControlName="data"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dataDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleDiario.cliente" for="field_cliente">Cliente</label>
+          <input type="text" class="form-control" name="cliente" id="field_cliente" data-cy="cliente" formControlName="cliente" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleDiario.valorCompra" for="field_valorCompra">Valor Compra</label>
+          <input
+            type="number"
+            class="form-control"
+            name="valorCompra"
+            id="field_valorCompra"
+            data-cy="valorCompra"
+            formControlName="valorCompra"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleDiario.valorPago" for="field_valorPago">Valor Pago</label>
+          <input type="number" class="form-control" name="valorPago" id="field_valorPago" data-cy="valorPago" formControlName="valorPago" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleDiario.saldoDevedor" for="field_saldoDevedor">Saldo Devedor</label>
+          <input
+            type="number"
+            class="form-control"
+            name="saldoDevedor"
+            id="field_saldoDevedor"
+            data-cy="saldoDevedor"
+            formControlName="saldoDevedor"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleDiario.recebimento" for="field_recebimento">Recebimento</label>
+          <input
+            type="number"
+            class="form-control"
+            name="recebimento"
+            id="field_recebimento"
+            data-cy="recebimento"
+            formControlName="recebimento"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleDiario.pagamento" for="field_pagamento">Pagamento</label>
+          <select class="form-control" name="pagamento" formControlName="pagamento" id="field_pagamento" data-cy="pagamento">
+            <option [ngValue]="null">{{ 'lojaDoraApp.FormasPagamento.null' | translate }}</option>
+            @for (formasPagamento of formasPagamentoValues; track $index) {
+              <option [value]="formasPagamento">{{ 'lojaDoraApp.FormasPagamento.' + formasPagamento | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleDiario.banco" for="field_banco">Banco</label>
+          <select class="form-control" name="banco" formControlName="banco" id="field_banco" data-cy="banco">
+            <option [ngValue]="null">{{ 'lojaDoraApp.Banco.null' | translate }}</option>
+            @for (banco of bancoValues; track $index) {
+              <option [value]="banco">{{ 'lojaDoraApp.Banco.' + banco | translate }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Salvar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

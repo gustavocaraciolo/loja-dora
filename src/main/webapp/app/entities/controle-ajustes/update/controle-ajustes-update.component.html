@@ -1,0 +1,122 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-controle-ajustes-heading"
+        data-cy="ControleAjustesCreateUpdateHeading"
+        jhiTranslate="lojaDoraApp.controleAjustes.home.createOrEditLabel"
+      >
+        Criar ou editar Controle Ajustes
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleAjustes.dataEntrega" for="field_dataEntrega">Data Entrega</label>
+          <div class="input-group">
+            <input
+              id="field_dataEntrega"
+              data-cy="dataEntrega"
+              type="text"
+              class="form-control"
+              name="dataEntrega"
+              ngbDatepicker
+              #dataEntregaDp="ngbDatepicker"
+              formControlName="dataEntrega"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dataEntregaDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleAjustes.dataRecebimento" for="field_dataRecebimento"
+            >Data Recebimento</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dataRecebimento"
+              data-cy="dataRecebimento"
+              type="text"
+              class="form-control"
+              name="dataRecebimento"
+              ngbDatepicker
+              #dataRecebimentoDp="ngbDatepicker"
+              formControlName="dataRecebimento"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dataRecebimentoDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleAjustes.qtdPecas" for="field_qtdPecas">Qtd Pecas</label>
+          <input type="number" class="form-control" name="qtdPecas" id="field_qtdPecas" data-cy="qtdPecas" formControlName="qtdPecas" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleAjustes.descricao" for="field_descricao">Descricao</label>
+          <input type="text" class="form-control" name="descricao" id="field_descricao" data-cy="descricao" formControlName="descricao" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleAjustes.valor" for="field_valor">Valor</label>
+          <input type="number" class="form-control" name="valor" id="field_valor" data-cy="valor" formControlName="valor" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleAjustes.receita" for="field_receita">Receita</label>
+          <select class="form-control" name="receita" formControlName="receita" id="field_receita" data-cy="receita">
+            <option [ngValue]="null">{{ 'lojaDoraApp.Receita.null' | translate }}</option>
+            @for (receita of receitaValues; track $index) {
+              <option [value]="receita">{{ 'lojaDoraApp.Receita.' + receita | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="lojaDoraApp.controleAjustes.funcionario" for="field_funcionario">Funcionario</label>
+          <select
+            class="form-control"
+            id="field_funcionario"
+            data-cy="funcionario"
+            name="funcionario"
+            formControlName="funcionario"
+            [compareWith]="compareFuncionario"
+          >
+            <option [ngValue]="null"></option>
+            @for (funcionarioOption of funcionariosSharedCollection; track $index) {
+              <option [ngValue]="funcionarioOption">{{ funcionarioOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Salvar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

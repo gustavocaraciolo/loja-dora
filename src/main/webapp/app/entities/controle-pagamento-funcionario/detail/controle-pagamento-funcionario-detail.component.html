@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (controlePagamentoFuncionario) {
+      <div>
+        <h2 data-cy="controlePagamentoFuncionarioDetailsHeading">
+          <span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.detail.title">Controle Pagamento Funcionario</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ controlePagamentoFuncionario.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.data">Data</span></dt>
+          <dd>
+            <span>{{ controlePagamentoFuncionario.data | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.salario">Salario</span></dt>
+          <dd>
+            <span>{{ controlePagamentoFuncionario.salario }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.beneficio">Beneficio</span></dt>
+          <dd>
+            <span>{{ controlePagamentoFuncionario.beneficio }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.comissao">Comissao</span></dt>
+          <dd>
+            <span>{{ controlePagamentoFuncionario.comissao }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.ferias">Ferias</span></dt>
+          <dd>
+            <span>{{ controlePagamentoFuncionario.ferias }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.adiantamento">Adiantamento</span></dt>
+          <dd>
+            <span>{{ controlePagamentoFuncionario.adiantamento }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.total">Total</span></dt>
+          <dd>
+            <span>{{ controlePagamentoFuncionario.total }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controlePagamentoFuncionario.funcionario">Funcionario</span></dt>
+          <dd>
+            @if (controlePagamentoFuncionario.funcionario) {
+              <div>
+                <a [routerLink]="['/funcionario', controlePagamentoFuncionario.funcionario.id, 'view']">{{
+                  controlePagamentoFuncionario.funcionario.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="['/controle-pagamento-funcionario', controlePagamentoFuncionario.id, 'edit']"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

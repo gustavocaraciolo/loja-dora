@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (controleAjustes) {
+      <div>
+        <h2 data-cy="controleAjustesDetailsHeading">
+          <span jhiTranslate="lojaDoraApp.controleAjustes.detail.title">Controle Ajustes</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ controleAjustes.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleAjustes.dataEntrega">Data Entrega</span></dt>
+          <dd>
+            <span>{{ controleAjustes.dataEntrega | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleAjustes.dataRecebimento">Data Recebimento</span></dt>
+          <dd>
+            <span>{{ controleAjustes.dataRecebimento | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleAjustes.qtdPecas">Qtd Pecas</span></dt>
+          <dd>
+            <span>{{ controleAjustes.qtdPecas }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleAjustes.descricao">Descricao</span></dt>
+          <dd>
+            <span>{{ controleAjustes.descricao }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleAjustes.valor">Valor</span></dt>
+          <dd>
+            <span>{{ controleAjustes.valor }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleAjustes.receita">Receita</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'lojaDoraApp.Receita.' + controleAjustes.receita }}">{{ controleAjustes.receita }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.controleAjustes.funcionario">Funcionario</span></dt>
+          <dd>
+            @if (controleAjustes.funcionario) {
+              <div>
+                <a [routerLink]="['/funcionario', controleAjustes.funcionario.id, 'view']">{{ controleAjustes.funcionario.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/controle-ajustes', controleAjustes.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
