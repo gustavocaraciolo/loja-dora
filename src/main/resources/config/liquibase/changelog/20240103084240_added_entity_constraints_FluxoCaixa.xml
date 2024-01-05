@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity FluxoCaixa.
+    -->
+    <changeSet id="20240103084240-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="fluxo_caixa_id"
+                                 baseTableName="rel_fluxo_caixa__entidades"
+                                 constraintName="fk_rel_fluxo_caixa__entidades__fluxo_caixa_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fluxo_caixa"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="entidades_id"
+                                 baseTableName="rel_fluxo_caixa__entidades"
+                                 constraintName="fk_rel_fluxo_caixa__entidades__entidades_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="entidades"
+                                 />
+    </changeSet>
+</databaseChangeLog>

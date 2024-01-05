@@ -1,0 +1,169 @@
+<div>
+  <h2 id="page-heading" data-cy="ControleDiarioHeading">
+    <span jhiTranslate="lojaDoraApp.controleDiario.home.title">Controle Diarios</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="lojaDoraApp.controleDiario.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-controle-diario"
+        [routerLink]="['/controle-diario/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lojaDoraApp.controleDiario.home.createLabel">Criar novo Controle Diario</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (controleDiarios?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lojaDoraApp.controleDiario.home.notFound">Nenhum Controle Diario encontrado</span>
+    </div>
+  }
+
+  @if (controleDiarios && controleDiarios.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="data">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controleDiario.data">Data</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cliente">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controleDiario.cliente">Cliente</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="valorCompra">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controleDiario.valorCompra">Valor Compra</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="valorPago">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controleDiario.valorPago">Valor Pago</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="saldoDevedor">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controleDiario.saldoDevedor">Saldo Devedor</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="recebimento">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controleDiario.recebimento">Recebimento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pagamento">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controleDiario.pagamento">Pagamento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="banco">
+              <div class="d-flex">
+                <span jhiTranslate="lojaDoraApp.controleDiario.banco">Banco</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (controleDiario of controleDiarios; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/controle-diario', controleDiario.id, 'view']">{{ controleDiario.id }}</a>
+              </td>
+              <td>{{ controleDiario.data | formatMediumDate }}</td>
+              <td>{{ controleDiario.cliente }}</td>
+              <td>{{ controleDiario.valorCompra }}</td>
+              <td>{{ controleDiario.valorPago }}</td>
+              <td>{{ controleDiario.saldoDevedor }}</td>
+              <td>{{ controleDiario.recebimento }}</td>
+              <td jhiTranslate="{{ 'lojaDoraApp.FormasPagamento.' + controleDiario.pagamento }}">{{ controleDiario.pagamento }}</td>
+              <td jhiTranslate="{{ 'lojaDoraApp.Banco.' + controleDiario.banco }}">{{ controleDiario.banco }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/controle-diario', controleDiario.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/controle-diario', controleDiario.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(controleDiario)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Excluir</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (controleDiarios && controleDiarios.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

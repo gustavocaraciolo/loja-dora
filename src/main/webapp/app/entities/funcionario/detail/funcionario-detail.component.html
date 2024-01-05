@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (funcionario) {
+      <div>
+        <h2 data-cy="funcionarioDetailsHeading"><span jhiTranslate="lojaDoraApp.funcionario.detail.title">Funcionario</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ funcionario.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.funcionario.primeiroNome">Primeiro Nome</span></dt>
+          <dd>
+            <span>{{ funcionario.primeiroNome }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.funcionario.ultimoNome">Ultimo Nome</span></dt>
+          <dd>
+            <span>{{ funcionario.ultimoNome }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.funcionario.enderecoLinha1">Endereco Linha 1</span></dt>
+          <dd>
+            <span>{{ funcionario.enderecoLinha1 }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.funcionario.enderecoLinha2">Endereco Linha 2</span></dt>
+          <dd>
+            <span>{{ funcionario.enderecoLinha2 }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.funcionario.dataInicio">Data Inicio</span></dt>
+          <dd>
+            <span>{{ funcionario.dataInicio | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.funcionario.telefone">Telefone</span></dt>
+          <dd>
+            <span>{{ funcionario.telefone }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.funcionario.telefoneEmergencial">Telefone Emergencial</span></dt>
+          <dd>
+            <span>{{ funcionario.telefoneEmergencial }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.funcionario.email">Email</span></dt>
+          <dd>
+            <span>{{ funcionario.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.funcionario.banco">Banco</span></dt>
+          <dd>
+            <span>{{ funcionario.banco }}</span>
+          </dd>
+          <dt><span jhiTranslate="lojaDoraApp.funcionario.iban">Iban</span></dt>
+          <dd>
+            <span>{{ funcionario.iban }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/funcionario', funcionario.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

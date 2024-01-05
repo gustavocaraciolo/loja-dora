@@ -1,0 +1,29 @@
+{
+  "lojaDoraApp": {
+    "controleEntregas": {
+      "home": {
+        "title": "Controle Entregases",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Controle Entregas",
+        "createOrEditLabel": "Criar ou editar Controle Entregas",
+        "notFound": "Nenhum Controle Entregas encontrado"
+      },
+      "created": "Um novo Controle Entregas foi criado com o identificador {{ param }}",
+      "updated": "Um Controle Entregas foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Controle Entregas foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Controle Entregas {{ id }}?"
+      },
+      "detail": {
+        "title": "Controle Entregas"
+      },
+      "id": "ID",
+      "data": "Data",
+      "descricao": "Descricao",
+      "endereco": "Endereco",
+      "receita": "Receita",
+      "valor": "Valor",
+      "funcionario": "Funcionario"
+    }
+  }
+}
