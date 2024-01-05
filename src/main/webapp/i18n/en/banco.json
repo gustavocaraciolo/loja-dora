@@ -1,0 +1,10 @@
+{
+  "lojaDoraApp": {
+    "Banco": {
+      "null": "",
+      "SOL": "SOL",
+      "CAIXA_ANGOLA": "CAIXA_ANGOLA",
+      "NUBANK": "NUBANK"
+    }
+  }
+}

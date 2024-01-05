@@ -1,0 +1,85 @@
+{
+  "annotations": {
+    "changelogDate": "20240103084840"
+  },
+  "applications": "*",
+  "entityTableName": "funcionario",
+  "fields": [
+    {
+      "fieldName": "primeiroNome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ultimoNome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "enderecoLinha1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "enderecoLinha2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataInicio",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "telefone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefoneEmergencial",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "banco",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "iban",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Funcionario",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "controlePagamentoFuncionario",
+      "otherEntityRelationshipName": "funcionario",
+      "relationshipName": "controlePagamentoFuncionario",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "controleAjustes",
+      "otherEntityRelationshipName": "funcionario",
+      "relationshipName": "controleAjustes",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "controleEntregas",
+      "otherEntityRelationshipName": "funcionario",
+      "relationshipName": "controleEntregas",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "controleFrequencia",
+      "otherEntityRelationshipName": "funcionario",
+      "relationshipName": "controleFrequencia",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

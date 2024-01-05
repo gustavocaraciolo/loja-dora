@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity ControleEntregas.
+    -->
+    <changeSet id="20240103084540-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="controle_entregas_id"
+                                 baseTableName="rel_controle_entregas__funcionario"
+                                 constraintName="fk_rel_controle_entregas__funcionario__controle_entregas_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="controle_entregas"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="funcionario_id"
+                                 baseTableName="rel_controle_entregas__funcionario"
+                                 constraintName="fk_rel_controle_entregas__funcionario__funcionario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="funcionario"
+                                 />
+    </changeSet>
+</databaseChangeLog>

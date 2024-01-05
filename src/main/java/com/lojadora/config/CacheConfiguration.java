@@ -48,6 +48,24 @@ public class CacheConfiguration {
             createCache(cm, com.lojadora.domain.User.class.getName());
             createCache(cm, com.lojadora.domain.Authority.class.getName());
             createCache(cm, com.lojadora.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.lojadora.domain.FluxoCaixa.class.getName());
+            createCache(cm, com.lojadora.domain.FluxoCaixa.class.getName() + ".entidades");
+            createCache(cm, com.lojadora.domain.Entidades.class.getName());
+            createCache(cm, com.lojadora.domain.Entidades.class.getName() + ".fluxoCaixas");
+            createCache(cm, com.lojadora.domain.ControleDiario.class.getName());
+            createCache(cm, com.lojadora.domain.ControleEntregas.class.getName());
+            createCache(cm, com.lojadora.domain.ControleEntregas.class.getName() + ".funcionarios");
+            createCache(cm, com.lojadora.domain.ControleFrequencia.class.getName());
+            createCache(cm, com.lojadora.domain.ControleFrequencia.class.getName() + ".funcionarios");
+            createCache(cm, com.lojadora.domain.ControleAjustes.class.getName());
+            createCache(cm, com.lojadora.domain.ControleAjustes.class.getName() + ".funcionarios");
+            createCache(cm, com.lojadora.domain.Funcionario.class.getName());
+            createCache(cm, com.lojadora.domain.Funcionario.class.getName() + ".controlePagamentoFuncionarios");
+            createCache(cm, com.lojadora.domain.Funcionario.class.getName() + ".controleAjustes");
+            createCache(cm, com.lojadora.domain.Funcionario.class.getName() + ".controleEntregases");
+            createCache(cm, com.lojadora.domain.Funcionario.class.getName() + ".controleFrequencias");
+            createCache(cm, com.lojadora.domain.ControlePagamentoFuncionario.class.getName());
+            createCache(cm, com.lojadora.domain.ControlePagamentoFuncionario.class.getName() + ".funcionarios");
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,43 @@
+{
+  "annotations": {
+    "changelogDate": "20240103084540"
+  },
+  "applications": "*",
+  "entityTableName": "controle_entregas",
+  "fields": [
+    {
+      "fieldName": "data",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "receita",
+      "fieldType": "Receita",
+      "fieldValues": "DORA,CLIENTE"
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "Float"
+    }
+  ],
+  "name": "ControleEntregas",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "funcionario",
+      "otherEntityRelationshipName": "controleEntregas",
+      "relationshipName": "funcionario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

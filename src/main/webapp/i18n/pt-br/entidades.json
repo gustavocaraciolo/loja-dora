@@ -1,0 +1,27 @@
+{
+  "lojaDoraApp": {
+    "entidades": {
+      "home": {
+        "title": "Entidades",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Entidades",
+        "createOrEditLabel": "Criar ou editar Entidades",
+        "notFound": "Nenhum Entidades encontrado"
+      },
+      "created": "Um novo Entidades foi criado com o identificador {{ param }}",
+      "updated": "Um Entidades foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Entidades foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Entidades {{ id }}?"
+      },
+      "detail": {
+        "title": "Entidades"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "endereco": "Endereco",
+      "telefone": "Telefone",
+      "fluxoCaixa": "Fluxo Caixa"
+    }
+  }
+}

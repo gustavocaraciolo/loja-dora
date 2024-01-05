@@ -1,0 +1,111 @@
+enum Receita {
+	DORA, CLIENTE
+}
+
+enum FormasPagamento {
+	TRANSFERENCIA, DINHEIRO, MULTICAIXA
+}
+
+enum FixoVariavel {
+	FIXO, VARIAVEL
+}
+
+enum Banco {
+	SOL, CAIXA_ANGOLA, NUBANK
+}
+
+enum EntradaSaida {
+	ENTRADA, SAIDA
+}
+
+enum Pais {
+	ANGOLA, BRASIL
+}
+/* Menu Financeiro */
+/* Menu Fluxo de Caixa */
+entity FluxoCaixa {
+	data LocalDate
+    saldo Float
+    banco Banco
+    valor Float
+    fixoVariavel FixoVariavel
+    entradaSaida EntradaSaida
+    pais Pais
+}
+
+entity Entidades {
+	nome String
+    endereco String
+    telefone Integer
+}
+
+/* Menu Vendas */
+/* Menu Controle Diário */
+entity ControleDiario {
+    data LocalDate
+    cliente String
+    valorCompra Float
+    valorPago Float
+    saldoDevedor Float
+    recebimento Float
+    pagamento FormasPagamento
+    banco Banco
+}
+
+/* Menu Serviços */
+/* Menu Entregas */
+entity ControleEntregas {
+    data LocalDate
+    descricao String
+    address String
+    receita Receita
+    valor Float
+}
+/* Menu Atelie */
+entity ControleFrequencia {
+    dataTrabalho LocalDate
+}
+
+entity ControleAjustes {
+	dataEntrega LocalDate
+    dataRecebimento LocalDate
+    qtdPecas Integer
+    descricao String
+    valor Float
+    receita Receita
+}
+
+/* Menu Funcionários */
+entity Funcionario {
+	primeiroNome String required
+    ultimoNome String required
+    enderecoLinha1 String
+    enderecoLinha2 String
+    dataInicio LocalDate
+    telefone String
+    telefoneEmergencial String
+    email String
+    banco String
+    iban String
+}
+/* Menu Funcionários */
+entity ControlePagamentoFuncionario {
+	data LocalDate
+    salario Float
+    beneficio Float
+    comissao Float
+    ferias Float
+    adiantamento Float
+    total Float
+}
+
+relationship ManyToMany {
+   ControlePagamentoFuncionario{funcionario} to Funcionario{controlePagamentoFuncionario}
+   ControleAjustes{funcionario} to Funcionario{controleAjustes}
+   ControleEntregas{funcionario} to Funcionario{controleEntregas}
+   ControleFrequencia{funcionario} to Funcionario{controleFrequencia}
+   FluxoCaixa{entidades} to Entidades{fluxoCaixa}
+}
+
+service * with serviceClass
+paginate FluxoCaixa, Entidades, ControleDiario, ControleEntregas, Funcionario, ControlePagamentoFuncionario with pagination

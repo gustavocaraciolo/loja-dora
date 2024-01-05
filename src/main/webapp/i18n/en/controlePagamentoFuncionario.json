@@ -1,0 +1,31 @@
+{
+  "lojaDoraApp": {
+    "controlePagamentoFuncionario": {
+      "home": {
+        "title": "Controle Pagamento Funcionarios",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Controle Pagamento Funcionario",
+        "createOrEditLabel": "Create or edit a Controle Pagamento Funcionario",
+        "notFound": "No Controle Pagamento Funcionarios found"
+      },
+      "created": "A new Controle Pagamento Funcionario is created with identifier {{ param }}",
+      "updated": "A Controle Pagamento Funcionario is updated with identifier {{ param }}",
+      "deleted": "A Controle Pagamento Funcionario is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Controle Pagamento Funcionario {{ id }}?"
+      },
+      "detail": {
+        "title": "Controle Pagamento Funcionario"
+      },
+      "id": "ID",
+      "data": "Data",
+      "salario": "Salario",
+      "beneficio": "Beneficio",
+      "comissao": "Comissao",
+      "ferias": "Ferias",
+      "adiantamento": "Adiantamento",
+      "total": "Total",
+      "funcionario": "Funcionario"
+    }
+  }
+}
