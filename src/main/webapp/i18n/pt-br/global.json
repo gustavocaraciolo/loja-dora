@@ -5,6 +5,28 @@
     "menu": {
       "home": "Início",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+      "funcionarios": {
+        "funcionarios": "Funcionários",
+        "cadastro": "Cadastro",
+        "controlePagamento": "Controle de pagamento"
+      },
+      "servicos": {
+        "servicos": "Serviços",
+        "atelie": "Ateliê",
+        "controleFrequencia": "Controle de frequência",
+        "controleAjustes": "Controle de Ajustes",
+        "entrega": "Entrega",
+        "controleEntrega": "Controle de Entrega"
+      },
+      "vendas": {
+        "vendas": "Vendas",
+        "controleDiario": "Controle diário"
+      },
+      "financeiro": {
+        "financeiro": "Financeiro",
+        "fluxoCaixa": "Fluxo de Caixa",
+        "entidades": "Entidades"
+      },
       "entities": {
         "main": "Entidades",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
